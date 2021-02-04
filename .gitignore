@@ -1,0 +1,9 @@
+#exclude folders
+key/
+!key/__init__.py
+videos/
+!videos/__init__.py
+
+.vscode/*
+venv/*
+
