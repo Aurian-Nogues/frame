@@ -1,7 +1,7 @@
 #exclude folders
-key/
+key/*
 !key/__init__.py
-videos/
+videos/*
 !videos/__init__.py
 
 .vscode/*
