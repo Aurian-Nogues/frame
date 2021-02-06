@@ -26,5 +26,5 @@ class VideoPlayer:
     #     #     sleep(1)
     
 if __name__ == "__main__":
-    player = VideoPlayer('test.mp4')
+    player = VideoPlayer('encrypted_test.mp4')
     player.play()

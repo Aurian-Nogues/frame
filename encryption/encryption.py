@@ -46,3 +46,27 @@ class Encryption:
         self.key = key
 
         return key
+
+    def encrypt_file(self,input_file, output_file, input_folder = 'videos', output_folder = 'videos'):
+        if self.key is None:
+            raise Exception("You need to first load a key is Encryption.load_key(key_name)")
+
+        input_video_location = os.path.abspath(os.path.join(input_folder, input_file))
+        output_video_location = os.path.abspath(os.path.join(output_folder, output_file))
+        
+        non_encrypted = open(input_video_location, 'rb')
+        temp = non_encrypted.read()
+
+        f = Fernet(self.key)
+        encrypted = f.encrypt(temp)
+
+        encrypted_file= open(output_video_location, 'wb')
+        encrypted_file.write(encrypted)
+
+
+
+
+if __name__ == "__main__":
+    x=Encryption()
+    x.load_key('myKey')
+    x.encrypt_file(input_file="test.mp4", output_file="encrypted_test.mp4")
