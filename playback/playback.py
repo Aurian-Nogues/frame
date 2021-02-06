@@ -1,18 +1,30 @@
 import vlc
 import os
 from time import sleep
+import subprocess
 
-#define paths
-video_folder = os.path.abspath('videos')
-video_name = 'test.mp4'
-videos_path = os.path.abspath(os.path.join(video_folder, video_name))
 
-print(videos_path)
+class VideoPlayer:
+    def __init__(self, video_name, video_folder = 'videos'):
+        self.video_path = os.path.abspath(os.path.join(video_folder, video_name))
 
-# #create vlc media object
-player = vlc.MediaPlayer(videos_path)
-player.play()
-sleep(4) #needs time to open vlc
-while player.is_playing():
-    sleep(1)
+    def play(self):
+        subprocess.Popen(['vlc', 'fullscreen', self.video_path, '--loop'])
+
+    # def old_code(self):
+
+    #     #define paths
+    #     video_folder = os.path.abspath('videos')
+    #     video_name = 'test.mp4'
+    #     videos_path = os.path.abspath(os.path.join(video_folder, video_name))
+    #     # # #create vlc media object
+    #     # player = vlc.MediaPlayer(videos_path)
+    #     # player.set_fullscreen(True)
+    #     # player.play()
+    #     # sleep(4) #needs time to open vlc
+    #     # while player.is_playing():
+    #     #     sleep(1)
     
+if __name__ == "__main__":
+    player = VideoPlayer('test.mp4')
+    player.play()
