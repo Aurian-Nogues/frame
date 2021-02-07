@@ -5,11 +5,12 @@ import subprocess
 
 
 class VideoPlayer:
-    def __init__(self, video_name, video_folder = 'videos'):
-        self.video_path = os.path.abspath(os.path.join(video_folder, video_name))
+    def __init__(self, video_name):
+        ramdisk_location=os.path.abspath('/mnt/ramdisk')
+        self.video_path = os.path.abspath(os.path.join(ramdisk_location, video_name))
 
     def play(self):
-        subprocess.Popen(['vlc', 'fullscreen', self.video_path, '--loop'])
+        subprocess.Popen(['vlc', self.video_path, '--loop'])
 
     # def old_code(self):
 
@@ -26,5 +27,5 @@ class VideoPlayer:
     #     #     sleep(1)
     
 if __name__ == "__main__":
-    player = VideoPlayer('encrypted_test.mp4')
+    player = VideoPlayer('test.mp4')
     player.play()
