@@ -99,8 +99,20 @@ class Encryption:
         decrypted_file = open(output_video_location, 'wb')
         decrypted_file.write(decrypted_bytes)
 
+    @staticmethod
+    def delete_on_interrupt():
+        """
+        This will remove any file in ramdisk
+        Use it on interrupt command to cleanup volatile memory
+        """
+
+        ramdisk_location=os.path.abspath('/mnt/ramdisk')
+        files_to_delete = os.listdir(ramdisk_location)
+        for file in files_to_delete:
+            os.remove(os.path.join(ramdisk_location, file))
+
 if __name__ == "__main__":
     x=Encryption()
-    x.load_key('myKey')
+    x.load_key('myKey.key')
 
     
