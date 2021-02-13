@@ -31,3 +31,13 @@ tmpfs       /mnt/ramdisk tmpfs nodev,nosuid,noexec,nodiratime,size=512M 0 0
 
 #SETUP VLC
 tools/preferences resize interface to video size needs to be unticked or the video resizes on loop end
+
+#setup card reader 
+1/ make sure spi is enabled in sudo raspi-config > interfacing options
+2/reboot
+3/lsmod | grep spi should show spi_bcm2835 otherwise it failed. 
+    -> sudo nano /boot/config.txt -> search dtparam=spi=on
+    -> if it is commented out, uncomment. otherwise add that line at the end of file
+4/ pip3 install spidev
+   pip3 install mfrc522
+   

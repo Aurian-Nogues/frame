@@ -1,7 +1,7 @@
 from playback.playback import VideoPlayer
 from encryption.encryption import Encryption
 from time import sleep
-from rfid.tests import read_data
+from rfid.rfid import read_data
 
 if __name__ == "__main__":
 

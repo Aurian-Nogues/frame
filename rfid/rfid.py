@@ -18,6 +18,7 @@ def read_data():
     try:
         id, text = reader.read()
         return id, text
+        
 
     finally:
         GPIO.cleanup()
