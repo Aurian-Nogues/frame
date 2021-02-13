@@ -28,3 +28,6 @@ Example:
 vi /etc/fstab
 
 tmpfs       /mnt/ramdisk tmpfs nodev,nosuid,noexec,nodiratime,size=512M 0 0
+
+#SETUP VLC
+tools/preferences resize interface to video size needs to be unticked or the video resizes on loop end

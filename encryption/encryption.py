@@ -113,6 +113,8 @@ class Encryption:
 
 if __name__ == "__main__":
     x=Encryption()
-    x.load_key('myKey.key')
+    x.write_key(key_name='myKey.key')
+    x.load_key(key_name='myKey.key')
+    x.encrypt_file('test_girl.mp4', 'test_girl.encrypted')
 
     

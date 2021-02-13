@@ -10,7 +10,7 @@ class VideoPlayer:
         self.video_path = os.path.abspath(os.path.join(ramdisk_location, video_name))
 
     def play(self):
-        subprocess.Popen(['vlc', self.video_path, '--loop'])
+        subprocess.Popen(['vlc', self.video_path, '--loop', '--fullscreen'])
 
     # def old_code(self):
 

@@ -1,14 +1,18 @@
 from playback.playback import VideoPlayer
 from encryption.encryption import Encryption
 from time import sleep
+from rfid.tests import read_data
 
 if __name__ == "__main__":
+
+      id, text = read_data()
+      
 
       try:
             #decrypt video
             cypher = Encryption()
             cypher.load_key('myKey.key')
-            cypher.decrypt_file('test.encrypted', 'test.mp4')
+            cypher.decrypt_file('test_girl.encrypted', 'test.mp4')
 
             #read video
             player = VideoPlayer('test.mp4')
