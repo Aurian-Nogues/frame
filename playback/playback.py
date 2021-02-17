@@ -8,6 +8,7 @@ class VideoPlayer:
     def __init__(self, video_name):
         ramdisk_location=os.path.abspath('/mnt/ramdisk')
         self.video_path = os.path.abspath(os.path.join(ramdisk_location, video_name))
+        #omxplayer --loop <file>
 
     def play(self):
         subprocess.Popen(['vlc', self.video_path, '--loop', '--fullscreen'])
