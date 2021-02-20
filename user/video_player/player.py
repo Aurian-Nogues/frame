@@ -14,8 +14,6 @@ class VideoPlayer:
 
 
     def play(self):
-        # subprocess.Popen(['cvlc', self.video_path, '--loop', '--fullscreen'])
-        # subprocess.Popen(['omxplayer','--loop' , self.video_path])
         subprocess.check_call([self.script_path, self.video_path])
 
 if __name__ == "__main__":

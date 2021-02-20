@@ -1,4 +1,4 @@
-from cryptography.fernet import Fernet
+from cryptography.fernet import Fernet, InvalidToken
 import os
 import time
 import RPi.GPIO as GPIO
@@ -75,14 +75,17 @@ class UserCipher:
         decrypted_location = os.path.abspath(os.path.join(output_folder, decrypted_file_name))
 
         f=Fernet(self.key)
-        #read bytes of encryted file
-        encrypted = open(encrypted_location, 'rb')
-        encrypted_bytes = encrypted.read()
-        #decrypt bytes
-        decrypted_bytes = f.decrypt(encrypted_bytes)
-        #store decrypted bytes in ramdisk
-        decrypted_file = open(decrypted_location, 'wb')
-        decrypted_file.write(decrypted_bytes)
+        try:
+            #read bytes of encryted file
+            encrypted = open(encrypted_location, 'rb')
+            encrypted_bytes = encrypted.read()
+            #decrypt bytes
+            decrypted_bytes = f.decrypt(encrypted_bytes)
+            #store decrypted bytes in ramdisk
+            decrypted_file = open(decrypted_location, 'wb')
+            decrypted_file.write(decrypted_bytes)
+        except InvalidToken:
+            print("Error: the key on the card is not the right one for this video")
         
         
     @staticmethod
@@ -100,5 +103,5 @@ class UserCipher:
 
 if __name__ == "__main__":
     cipher = UserCipher()
-    cipher.delete_on_interrupt()
+    cipher.decrypt_video()
     
