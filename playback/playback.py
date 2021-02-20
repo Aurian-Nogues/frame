@@ -20,7 +20,7 @@ class VideoPlayer:
     #     video_name = 'test.mp4'
     #     videos_path = os.path.abspath(os.path.join(video_folder, video_name))
     #     # # #create vlc media object
-    #     # player = vlc.MediaPlayer(videos_path)
+    # player = vlc.MediaPlayer(videos_path)
     #     # player.set_fullscreen(True)
     #     # player.play()
     #     # sleep(4) #needs time to open vlc
