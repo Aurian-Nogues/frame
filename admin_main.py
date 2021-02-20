@@ -1,10 +1,6 @@
 from administrator.encryption_admin.encryption import Encryption_admin
 
-cypher = Encryption_admin()
-
-
-
-
+cipher = Encryption_admin()
 
 if __name__ == "__main__":
     response=None
@@ -25,10 +21,10 @@ if __name__ == "__main__":
             print(menu_string)
 
         if response == '1':
-            cypher.generate_new_key_rfid()
+            cipher.generate_new_key_rfid()
 
         if response == '2':
-            cypher.load_encryption_key()
+            cipher.load_encryption_key()
 
         if response == '3':
-            cypher.encrypt_video()            
+            cipher.encrypt_video()            

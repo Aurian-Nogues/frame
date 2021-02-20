@@ -68,7 +68,7 @@ class Encryption_admin:
                 failed=False
                 try:
                     response = int(response)
-                    if (response - 1) > len(files_in_folder):
+                    if response > len(files_in_folder):
                         print('This number is bigger than the number of files')
                         failed=True
                 except ValueError:

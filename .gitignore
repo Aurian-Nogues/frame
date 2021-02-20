@@ -5,6 +5,9 @@ administrator/videos/encrypted/*
 !administrator/videos/encrypted/__init__.py
 administrator/videos/non_encrypted/*
 !administrator/videos/non_encrypted/__init__.py
+user/videos/*
+!user/videos/__init__.py
+
 
 .vscode/*
 venv/*
