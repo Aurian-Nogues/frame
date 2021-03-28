@@ -136,7 +136,7 @@ class GetSsids:
     def write_value(self, value, options):
 
         value = bytes(value).decode('utf-8')
-        if value == 'network_scan_trigger':
+        if value == 'get_ssid':
             # If you receive that string you need to scan
             ssids_list = self.scan_network()
             if len(ssids_list) > 0:
