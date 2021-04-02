@@ -40,7 +40,7 @@ $ source ble-env/bin/activate
 (ble-env) $ pip3 install PyGObject
 (ble-env) $ pip3 install bluezero
 (ble-env) $ pip3 install gpiozero RPi.GPIO  # optional package for reading the real CPU temperature
-
+pip3 install iw_parse # this is to parse wifi config scanner result in linux
 (ble-env) $ sudo ble-env/bin/python3.7 main.py
 ```
 

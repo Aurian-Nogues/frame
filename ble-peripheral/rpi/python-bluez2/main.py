@@ -5,6 +5,7 @@ import logging, random, time
 from bluezero import async_tools
 from bluezero import adapter
 from bluezero import peripheral
+from wifi_utilities import WifiUtilities
 
 try:
     from gpiozero import CPUTemperature as CPUTemp
@@ -12,6 +13,8 @@ try:
 except:
     CPUTemperature = lambda : random.randrange(3200,7000,1)/100.0
     pass
+
+wifi = WifiUtilities()
 
 
 # Custom 128-bit service uuid (can be generated at https://www.uuidgenerator.net/)
@@ -129,21 +132,22 @@ class GetSsids:
         self.characteristic = None
         self.current_ssid = None # This is where we store chosen SSID
     
-    def scan_network(self):
-        return ['ssid1', 'ssid2']
-
     
     def write_value(self, value, options):
 
         value = bytes(value).decode('utf-8')
         if value == 'get_ssid':
             # If you receive that string you need to scan
-            ssids_list = self.scan_network()
+            networks_list = wifi.scan_ssids(dBm_limit = -70)
+
             if len(ssids_list) > 0:
+                print('Found these networks')
+                print(networks_list)
+                print('sending ssids through bluetooth...')
                 for ssid in ssids_list:
                     self.send_notification(ssid)
             else:
-                print('Did not find any SSID')
+                print('Did not find any network')
         else:
             # if you receive anything else, it is a chosen SSID by user
 
@@ -280,10 +284,6 @@ def main(adapter_address):
 
     # Publish peripheral and start event loop
     cpu_monitor.publish()
-
-
-
-
 
 
 if __name__ == '__main__':
