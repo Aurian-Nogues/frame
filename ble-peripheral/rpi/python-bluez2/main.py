@@ -135,16 +135,18 @@ class GetSsids:
     
     def write_value(self, value, options):
 
+
         value = bytes(value).decode('utf-8')
         if value == 'get_ssid':
             # If you receive that string you need to scan
             networks_list = wifi.scan_ssids(dBm_limit = -70)
 
-            if len(ssids_list) > 0:
+            if len(networks_list) > 0:
                 print('Found these networks')
                 print(networks_list)
-                print('sending ssids through bluetooth...')
-                for ssid in ssids_list:
+                
+                for ssid in networks_list:
+                    print(f'sending {ssid} to Bluetooth')
                     self.send_notification(ssid)
             else:
                 print('Did not find any network')
@@ -156,8 +158,6 @@ class GetSsids:
     
     def script_to_connect_to_wifi(self, ssid):
         pass # would need to also manage password in response
-
-
 
     def read_value(self):
         """
@@ -204,9 +204,6 @@ class GetSsids:
         # Return True to continue notifying. Return a False will stop notifications
         # Getting the value from the characteristic of if it is notifying
         return self.characteristic.is_notifying
-
-
-
 
 
 def main(adapter_address):

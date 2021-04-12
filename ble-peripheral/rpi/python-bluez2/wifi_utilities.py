@@ -9,7 +9,7 @@ class WifiUtilities:
             Args:
                 dBm_limit: None will return all SSIDs
                         if passing an integer, this is the DB limit that will be used to filter returned networks
-                        -30 dBm: amazong
+                        -30 dBm: amazing
                         -67 dBm: very good (voip, streaming, video)
                         -70 dBm: minimum acceptable for reliable packet delivery (email / web)
                         -80 dBm: unreliable packet delivery
