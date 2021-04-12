@@ -140,7 +140,7 @@ class GetSsids:
         if value == 'get_ssid':
             # If you receive that string you need to scan
             networks_list = wifi.scan_ssids(dBm_limit = -70)
-
+            # ['FRITZ!Box 7490', 'HZN247639355', 'SophienFunk', 'NETZ2G', 'UPC98E293D', 'UPC98E293D_5G']
             if len(networks_list) > 0:
                 print('Found these networks')
                 print(networks_list)
